@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <title>QuanMoMo</title>
+    <link rel="stylesheet" href="Content/框架.css">
+    <link rel="shortcut icon" href="../QuanMoMo.github.io/Images/未标题-1.png" >
+
+
+</head>
+
+<body>
+    <div id="section" v-if="false"></div>
+    <div class="wrap pc">
+        <!--pc-->
+
+        <!--覆盖-->
+
+
+        <!--菜单-->
+      
+
+
+        <!--主页-->
+        <div class="section">
+            <!-- 丢titles里面 -->
+            <div class="title" id="title">
+                <!-- 主页 -->
+                <div class="title-inner">
+                    <!-- 视频 -->
+                    <div class="title-background">
+                        <!-- 视频覆盖 -->
+                        <video class="title-background-video" src="./Images/122.mp4" autobuffer="autobuffer"
+                            autoplay="autoplay" loop="loop" muted="muted">
+                        </video>
+                    </div>
+                    <!-- 明日方舟 -->
+                    <h1 class="title-main">
+                        <span class="title-main-text">明日方舟</span>
+                    </h1>
+
+                    <!-- 001-003 -->
+                    <div class="title-pv">
+                        <div class="title-pv-list">
+
+                            <!-- 001 -->
+                            <a class="title-pv-item" :class="{ active: pv_active_index === 0 }"
+                                data-video-link="./Images/001.MP4" @click.prevent="switchPV(0, $event)">001</a>
+                            <div class="title-pv-info" v-if="pv_active_index === 0">
+                                <div class="title-pv-main">QuanMoMo</div>
+                                <div class="title-pv-sub">(>^ω^<)</div>
+                            </div>
+
+                            <!-- 002 -->
+                            <a class="title-pv-item" :class="{ active: pv_active_index === 1 }"
+                                data-video-link="./Images/002.MP4" @click.prevent="switchPV(1, $event)">002</a>
+                            <div class="title-pv-info" v-if="pv_active_index === 1">
+                                <div class="title-pv-main">ONE'S RIGHR HAND </div>
+                                <div class="title-pv-sub">KTITHGARING</div>
+                            </div>
+
+                            <!-- 003 -->
+                            <a class="title-pv-item" :class="{ active: pv_active_index === 2 }"
+                                data-video-link="./Images/003.mp4" @click.prevent="switchPV(2, $event)">003</a>
+                            <div class="title-pv-info" v-if="pv_active_index === 2">
+                                <div class="title-pv-main">GDRAGON</div>
+                                <div class="title-pv-sub">-P̶E̶A̶C̶E̶M̶I̶N̶U̶S̶O̶N̶E̶-</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 下载/视频 -->
+                    <div class="title-button">
+                        <!-- 视频 -->
+                        <a class="title-button-play" href="#" @click="playVideo">
+                            <span class="title-button-play-title">{{ pv }}</span>
+                        </a>
+                        <!-- 扫 码 下 载 -->
+                        <div class="title-download" :class="{ expanded: expanded }">
+                            <div class="title-download-inner">
+                                <span class="title-download-scan">P E A C E M I N U S O N E</span>
+                                <a class="title-download-ios" >K T I T H   G A R I N G</a>
+                              
+                            </div>
+                        </div>
+                        <a class="title-button-download" href="#" :class="{ expanded: expanded }"
+                            @click="toggleDownload">权某某</a>
+                    </div>
+
+               
+
+                </div>
+            </div>
+        </div>
+
+      
+
+
+   
+
+
+        <!-- 弹窗视频 -->
+        <div class="modal" id="modal">
+            <modal v-if="state.showModal" @close="close">
+                <div class="modal-content" slot="content" v-html="state.content"></div>
+            </modal>
+            <script type="text/x-template" id="modal-template">
+            <transition name="modal">
+                <div class="modal-mask">
+                     <div class="modal-wrapper" :class="$root.state.current_component.name">
+                        <div class="modal-container">
+                            <slot name="close-button">
+                                <button class="modal-close-button" @click="$emit('close')" title="关闭">(>Д<)</button>
+                            </slot>
+                            <component :is="$root.state.current_component.name" :data="$root.state.current_component.data">
+                            </component>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+          </script>
+        </div>
+
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------------------------------------------------------------ -->
+    <script type="text/javascript" src="Scripts/index.bundle.js"></script>
+    <script type="text/javascript" src="Scripts/vendor.bundle.js"></script>
+
+
+ 
+
+
+
+
+    <style>
+    /* <div class="section">
+            <!-- 丢titles里面 -->
+            <div class="title" id="title"> */
+                section>#title {
+                    width: 100vw;
+                    height: 100vh;
+                }
+    </style>
+</body>
+
+</html>
